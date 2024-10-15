@@ -29,3 +29,18 @@ ext {
 
     appCompatVersion = "1.1.0"
 }
+
+afterEvaluate(
+        android.libraryVariant.each(variant ->
+        publishing.publications.create(variant.name, MavenPublication){
+            from components.findByName(variant.name)
+
+            groupId = 'com.fragmentation_components'
+            artifactId = 'fragmentation'
+            version = '1.0.1'
+
+            groupId = 'com.fragmentation_swipeback'
+            artifactId = 'fragmentation_swipeback'
+            version = '1.0.1'
+        })
+)
